@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <div class="jumbotron text-center">
+    <h1 class="display-10">Welcome to DailyDoseOfArticles</h1>
+    <p class="lead">This application is build on python flask web framework</p>
+    {% if session.logged_in  %}
+      <a href="/articles" class="btn btn-info btn-lg">All Articles</a>
+    {% endif %}
+    {% if session.logged_in == NULL %}
+      <a href="/register" class="btn btn-primary btn-lg">Register</a>
+      <a href="/login" class="btn btn-success btn-lg">Login</a>
+      <a href="/articles" class="btn btn-info btn-lg">All Articles</a>
+    {% endif %}
+    
+    
+{% endblock %}

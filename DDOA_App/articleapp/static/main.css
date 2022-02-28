@@ -1,0 +1,31 @@
+
+
+
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+
+
+.form-group {
+  margin-bottom: 5px;
+}
+
+
+
+.account-img {
+  height: 120px;
+  width: 120px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+  border-radius: 50%;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+}

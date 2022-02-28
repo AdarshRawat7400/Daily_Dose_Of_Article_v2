@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<style>
+  .hello {
+	margin: 1em 0 0.5em 0;
+	font-weight: normal;
+	position: relative;
+	text-shadow: 0 -1px rgba(0,0,0,0.6);
+	font-size: 28px;
+	line-height: 40px;
+	background: #355681;
+	background: rgba(64, 129, 53, 0.8);
+	border: 1px solid #fff;
+	padding: 5px 15px;
+	color: white;
+	border-radius: 0 10px 0 10px;
+	box-shadow: inset 0 0 5px rgba(53,86,129, 0.5);
+	font-family: 'Muli', sans-serif;
+}
+</style>
+<h2 class="account-heading btn btn-primary active">Articles (All Articles From DailyDoseOfArticles)</h2>
+<p class="text-secondary"><b>Get all your favourate topic articles at one place</b></p>
+<table id="data" class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Article Title</th>
+      <th>Author</th>
+      <th>Last Updated at</th>
+      
+
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+  $(document).ready(function () {
+    
+    $('#data').DataTable({
+      ajax: '/api/data',
+      
+      columns: [
+        {data: 'id'},
+        {data: 'title', searchable: true},
+        {data: 'author', searchable: true},
+        {data: 'updated_at', searchable: true}
+
+      ],
+      
+    });
+  });
+</script>
+{% endblock %}

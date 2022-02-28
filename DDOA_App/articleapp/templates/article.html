@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1>{{article.title}}</h1>
+<div class="media">
+    <img class="rounded-circle account-img" src="{{ image_file }}">
+    <div class="media-body">
+        <small>Written by: {{article.author.title()}} on {{article.created_at}}</small>
+
+    </div>
+<hr>
+<div class="container">
+    {{article.body | safe}}
+   
+
+</div>
+
+{% endblock %}

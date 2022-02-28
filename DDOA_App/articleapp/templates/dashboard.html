@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1>DashBoard  <small>Weclome {{session.username}}  </small></h1>
+
+<a class="btn btn-success" href="/add_article">Add Article</a></br>
+{% if articles.total==0 %}
+  <h4>Create Your Own Articles by Clicking Add Article</h4>
+{% endif %}
+<hr>
+<div>
+<!-- <table class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Created On</th>
+      <th>Updated On</th>
+      <th></th>
+      <th></th>
+    </tr>
+    {% for article in articles %}
+      <tr>
+        <td>{{article.id}}</td>
+        <td><a href="{{url_for('article',id=article.id,slug=article.slug)}}">{{article.title}}</a></td>
+        <td>{{article.author}}</td>
+        <td>{{article.created_at}}</td>
+        <td>{{article.updated_at}}</td>
+        <td><a href="edit_article/{{article.id}}/{{article.slug}}" class="btn btn-default pull-right" >Edit</a></td>
+        <td>
+          <form action="{{url_for('delete_article',id=article.id,slug=article.slug)}}" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Delete" class="btn btn-danger">
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </table> -->
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Created On</th>
+        <th>Updated On</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for article in articles %}
+        <tr>
+          <td>{{ article.id }}</td>
+          <td><a href="{{url_for('article',id=article.id,slug=article.slug)}}">{{article.title}}</a></td>
+          <td>{{ article.author }}</td>
+          <td>{{ article.created_at}}</td>
+          <td>{{ article.updated_at }}</td>
+          <td><a href="edit_article/{{article.id}}/{{article.slug}}" class="btn btn-default pull-right" >Edit</a></td>
+         <td>
+          <form action="{{url_for('delete_article',id=article.id,slug=article.slug)}}" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Delete" class="btn btn-danger">
+          </form>
+        </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+{% endblock %}
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable({
+        "order": [[ 0, "desc" ]]
+      });
+      });
+   
+  </script>
+{% endblock %}

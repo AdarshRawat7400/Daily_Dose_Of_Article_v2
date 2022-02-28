@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1>Update Profile</h1>
+{% from "includes/_formhelpers.html" import render_field %}
+ 
+        <div class="media">
+          <img class="rounded-circle account-img" src="{{ image_file }}">
+          <div class="media-body">
+            <h3 class="account-heading">{{ form.username.data }}</h3>
+            <p class="text-secondary">{{ form.email.data }}</p>
+          </div>
+
+          
+       
+<form method="POST" action=""  enctype="multipart/form-data">
+    {{ form.csrf_token()}}
+
+    <div class="form-group">
+        {{render_field(form.name,class_="form-control")}}
+    </div>
+    <div class="form-group">
+        {{render_field(form.email,class_="form-control")}}
+    </div>
+    <div class="form-group">
+        {{render_field(form.username,class_="form-control")}}
+    </div>
+
+    <!-- <p>{{ form.submit(class="btn btn-primary") }}</p> -->
+   <div >
+      
+       <!-- {{ render_field(form.profile_img,class_='form-control-file') }}
+     -->
+    {{ form.profile_img.label }}
+     <input type = "file" name = "file" accept="image/*" />
+   </div></br>
+    <a href="{{url_for('update_profile',id=session['id'])}}">
+        <button type="submit" class="btn btn-primary">Update Profile</button>
+    </a>
+</form>
+
+{% endblock %}
